@@ -6,6 +6,9 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import GamesIndex from "../views/GamesIndex.vue";
 import GamesShow from "../views/GamesShow.vue";
+import ListsIndex from "../views/ListsIndex.vue";
+import ListNew from "../views/ListNew.vue";
+import ListShow from "../views/ListShow.vue";
 
 Vue.use(VueRouter)
 
@@ -39,6 +42,21 @@ const routes = [
     path: "/games/:id", 
     name: "gamesShow", 
     component: GamesShow 
+  },
+  { 
+    path: "/lists", 
+    name: "listsIndex", 
+    component: ListsIndex
+  },
+  { 
+    path: "/lists/new", 
+    name: "listNew", 
+    component: ListNew 
+  },
+  { 
+    path: "/lists/:id", 
+    name: "listShow", 
+    component: ListShow 
   },
   {
     path: '/about',
