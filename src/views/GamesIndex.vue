@@ -2,14 +2,12 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <div v-for="game in games">
-      <h2>{{game.name}}</h2>
+      <h2>{{game.title}}</h2>
       <p>ID: {{game.id}}</p>
       <p>Description: {{game.description}}</p>
       <p>Release Year: {{game.release_year}}</p>
       <p>Cumulative Rating: {{game.cumulative_rating}}</p>
-      <p>Genre: {{game.genre}}</p>
-      <p>Platform: {{game.platform}}</p>
-      <p>Reviews: {{game.review}}</p>
+      <router-link v-bind:to="`/games/${game.id}`">See More Info</router-link>
       <hr>
     </div>
   </div>
