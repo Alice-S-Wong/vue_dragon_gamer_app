@@ -5,6 +5,8 @@
       <router-link to="/games">Games Index</router-link> | 
       <router-link to="/lists">Lists Index</router-link> | 
       <router-link to="/lists/new">Create a List</router-link> | 
+      <router-link to="/list_items/new">Add Item to List</router-link> |
+      <router-link to="/reviews/new">Write a Review</router-link> |  
       <router-link to="/signup">Signup</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/logout">Logout</router-link> |

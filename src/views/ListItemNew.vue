@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
+  <div class="ListItemNew">
     <h1>{{ message }}</h1>
     <div v-for="error in errors">{{error}}</div>
     <p>List Type:<input v-model="listType"></p>
-    <p>List Type:<input v-model="visibility"></p>
-    <button v-on:click="createList()">Create List</button>
+    <p>Game ID:<input v-model="gameId"></p>
+    <button v-on:click="addItemToList()">Add Item to List</button>
   </div>
 </template>
 
@@ -16,20 +16,20 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      message: "Create a List",
+      message: "Add Item to List",
       listType: "",
-      visibility: "",
+      gameId: "",
       errors: []
     };
   },
   created: function() {},
   methods: {
-    createList: function() {
+    addItemToList: function() {
       var params = {
         list_type: this.listType,
-        visibility: this.visibility
+        game_id: this.gameId
       };
-      axios.post("/api/lists", params).then(response => {
+      axios.post("/api/list_items", params).then(response => {
         this.$router.push("/lists");
       }).catch(error => {
         console.log(error.response);
