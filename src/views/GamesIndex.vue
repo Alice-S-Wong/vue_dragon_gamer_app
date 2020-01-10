@@ -1,15 +1,24 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-    <div v-for="game in games">
-      <h2>{{game.title}}</h2>
-      <p>ID: {{game.id}}</p>
-      <p>Description: {{game.description}}</p>
-      <p>Release Year: {{game.release_year}}</p>
-      <p>Cumulative Rating: {{game.cumulative_rating}}</p>
-      <router-link v-bind:to="`/games/${game.id}`">See More Info</router-link>
-      <hr>
-    </div>
+
+    <section class="wrapper style1">
+          <div class="container">
+            <div class="row" v-for="game in games">
+              <section class="col-6 col-12-narrower">
+                <div class="box post">
+                  <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
+                  <div class="inner">
+                    <h3>{{game.title}}</h3>
+                    <p>{{game.description}}</p>
+                    <p>Release Year: {{game.release_year}}</p>
+                    <p>Cumulative Rating: {{game.cumulative_rating}}</p>
+                    <router-link v-bind:to="`/games/${game.id}`">See More Info</router-link>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
   </div>
 </template>
 

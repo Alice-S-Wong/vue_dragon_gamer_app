@@ -1,18 +1,115 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/games">Games Index</router-link> | 
-      <router-link to="/lists">Lists Index</router-link> | 
-      <router-link to="/lists/new">Create a List</router-link> | 
-      <router-link to="/list_items/new">Add Item to List</router-link> |
-      <router-link to="/reviews/new">Write a Review</router-link> |  
-      <router-link to="/signup">Signup</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/logout">Logout</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <div id="header">
+
+          <!-- Logo -->
+            <h1><a href="index.html" id="logo">Dragon Gamer</a></h1>
+
+          <!-- Nav -->
+            <nav id="nav">
+              <ul>
+                <!-- <li class="current"><a href="index.html">Home</a></li>
+                <li>
+                  <a href="#">User Tools</a>
+                  <ul>
+                    <li><a href="/signup">Sign Up</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li>
+                      <a href="#">Submenu</a>
+                      <ul>
+                        <li><a href="#">Lorem dolor</a></li>
+                        <li><a href="#">Phasellus magna</a></li>
+                        <li><a href="#">Magna phasellus</a></li>
+                        <li><a href="#">Etiam nisl</a></li>
+                        <li><a href="#">Veroeros feugiat</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Veroeros feugiat</a></li>
+                  </ul>
+                </li> -->
+                <li><a href="/games">Games Index</a></li>
+                <li><a href="/lists">Lists Index</a></li>
+                <li><a href="/lists/new">Make New List</a></li>
+                <li><a href="/list_items/new">Add Item to List</a></li>
+                <li><a href="/reviews/new">Write a Review</a></li>
+                <li><a href="/signup">Signup</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </nav>
+
+        </div>
     <router-view/>
+    <div id="footer">
+          <div class="container">
+            <div class="row">
+              <section class="col-3 col-6-narrower col-12-mobilep">
+                <h3>Links to Stuff</h3>
+                <ul class="links">
+                  <li><a href="#">Mattis et quis rutrum</a></li>
+                  <li><a href="#">Suspendisse amet varius</a></li>
+                  <li><a href="#">Sed et dapibus quis</a></li>
+                  <li><a href="#">Rutrum accumsan dolor</a></li>
+                  <li><a href="#">Mattis rutrum accumsan</a></li>
+                  <li><a href="#">Suspendisse varius nibh</a></li>
+                  <li><a href="#">Sed et dapibus mattis</a></li>
+                </ul>
+              </section>
+              <section class="col-3 col-6-narrower col-12-mobilep">
+                <h3>More Links to Stuff</h3>
+                <ul class="links">
+                  <li><a href="#">Duis neque nisi dapibus</a></li>
+                  <li><a href="#">Sed et dapibus quis</a></li>
+                  <li><a href="#">Rutrum accumsan sed</a></li>
+                  <li><a href="#">Mattis et sed accumsan</a></li>
+                  <li><a href="#">Duis neque nisi sed</a></li>
+                  <li><a href="#">Sed et dapibus quis</a></li>
+                  <li><a href="#">Rutrum amet varius</a></li>
+                </ul>
+              </section>
+              <section class="col-6 col-12-narrower">
+                <h3>Get In Touch</h3>
+                <form>
+                  <div class="row gtr-50">
+                    <div class="col-6 col-12-mobilep">
+                      <input type="text" name="name" id="name" placeholder="Name" />
+                    </div>
+                    <div class="col-6 col-12-mobilep">
+                      <input type="email" name="email" id="email" placeholder="Email" />
+                    </div>
+                    <div class="col-12">
+                      <textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+                    </div>
+                    <div class="col-12">
+                      <ul class="actions">
+                        <li><input type="submit" class="button alt" value="Send Message" /></li>
+                      </ul>
+                    </div>
+                  </div>
+                </form>
+              </section>
+            </div>
+          </div>
+
+          <!-- Icons -->
+            <ul class="icons">
+              <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+              <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+              <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+              <li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+            </ul>
+
+          <!-- Copyright -->
+            <div class="copyright">
+              <ul class="menu">
+                <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              </ul>
+            </div>
+
+        </div>
+
   </div>
 </template>
 
