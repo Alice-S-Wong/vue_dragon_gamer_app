@@ -3,7 +3,20 @@
     <h1>{{ message }}</h1>
     <div v-for="error in errors">{{error}}</div>
     <p>Game ID:<input v-model="gameId"></p>
-    <p>Rating:<input v-model="rating"></p>
+    <p>Rating: <select v-model="rating">
+      <option disabled value="">Please select one</option>
+      <option>0</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+    </select></p>
     <p>Review:<input v-model="review"></p>
     <button v-on:click="createReview()">Create Review</button>
   </div>

@@ -9,6 +9,7 @@
                   <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
                   <div class="inner">
                     <h3>{{game.title}}</h3>
+                    <p>{{game.id}}</p>
                     <p>{{game.description}}</p>
                     <p>Release Year: {{game.release_year}}</p>
                     <p>Cumulative Rating: {{game.cumulative_rating}}</p>

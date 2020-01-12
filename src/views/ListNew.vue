@@ -2,8 +2,17 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <div v-for="error in errors">{{error}}</div>
-    <p>List Type:<input v-model="listType"></p>
-    <p>List Type:<input v-model="visibility"></p>
+    <p>List Type: <select v-model="listType">
+      <option disabled value="">Please select one</option>
+      <option>played</option>
+      <option>favorites</option>
+      <option>wishlist</option>
+    </select></p>
+    <p>Visibility: <select v-model="visibility">
+      <option disabled value="">Please select one</option>
+      <option>public</option>
+      <option>private</option>
+    </select></p>
     <button v-on:click="createList()">Create List</button>
   </div>
 </template>
@@ -17,8 +26,8 @@ export default {
   data: function() {
     return {
       message: "Create a List",
-      listType: "",
       visibility: "",
+      listType: "",
       errors: []
     };
   },

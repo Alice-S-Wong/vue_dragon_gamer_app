@@ -2,7 +2,12 @@
   <div class="ListItemNew">
     <h1>{{ message }}</h1>
     <div v-for="error in errors">{{error}}</div>
-    <p>List Type:<input v-model="listType"></p>
+    <p>List Type: <select v-model="listType">
+      <option disabled value="">Please select one</option>
+      <option>played</option>
+      <option>favorites</option>
+      <option>wishlist</option>
+    </select></p>
     <p>Game ID:<input v-model="gameId"></p>
     <button v-on:click="addItemToList()">Add Item to List</button>
   </div>
