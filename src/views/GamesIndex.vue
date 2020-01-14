@@ -3,7 +3,8 @@
 
     <section class="wrapper style1">
           <div class="container">
-            <div class="row" v-for="game in games">
+            <p>Search for games:<input type="text" v-model="searchTerm"></p>
+            <div class="row" v-for="game in filterBy(games, searchTerm, 'title')">
               <section class="col-6 col-12-narrower">
                 <div class="box post">
                   <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
@@ -28,11 +29,14 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from 'vue2-filters';
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
       message: "All Games",
-      games: []
+      games: [],
+      searchTerm: ""
     };
   },
   created: function() {
