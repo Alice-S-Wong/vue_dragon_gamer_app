@@ -11,6 +11,8 @@ import ListNew from "../views/ListNew.vue";
 import ListShow from "../views/ListShow.vue";
 import ListItemNew from "../views/ListItemNew.vue";
 import ReviewNew from "../views/ReviewNew.vue";
+import FEStatCalculator from "../views/FEStatCalculator.vue";
+import FEStatSimulator from "../views/FEStatSimulator.vue";
 
 Vue.use(VueRouter)
 
@@ -69,6 +71,16 @@ const routes = [
     path: "/reviews/new", 
     name: "ReviewNew", 
     component: ReviewNew 
+  },
+  { 
+    path: "/fe_stat_calculator", 
+    name: "FEStatCalculator", 
+    component: FEStatCalculator 
+  },
+  { 
+    path: "/fe_stat_simulator", 
+    name: "FEStatSimulator", 
+    component: FEStatSimulator 
   },
   {
     path: '/about',

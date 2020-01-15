@@ -4,6 +4,7 @@
 
           <!-- Logo -->
             <h1><a href="index.html" id="logo">Dragon Gamer</a></h1>
+            <p>{{username_display}}</p>
 
           <!-- Nav -->
             <nav id="nav">
@@ -126,3 +127,24 @@
   color: #42b983;
 }
 </style>
+
+<script>
+import axios from "axios";
+export default {
+  data: function() {
+    return {
+      username: {},
+      username_display: ""
+    };
+  },
+  created: function() {
+    axios.get("/api/users").then(response => {
+      if (response.data) {
+        this.username = response.data;
+        this.username_display = `Hello ${this.username["username"]}`;
+      }
+    });
+  },
+  methods: {}
+};
+</script>
