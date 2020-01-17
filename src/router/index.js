@@ -13,6 +13,7 @@ import ListItemNew from "../views/ListItemNew.vue";
 import ReviewNew from "../views/ReviewNew.vue";
 import FEStatCalculator from "../views/FEStatCalculator.vue";
 import FEStatSimulator from "../views/FEStatSimulator.vue";
+import IVCalculator from "../views/IVCalculator.vue";
 
 Vue.use(VueRouter)
 
@@ -81,6 +82,11 @@ const routes = [
     path: "/fe_stat_simulator", 
     name: "FEStatSimulator", 
     component: FEStatSimulator 
+  },
+  { 
+    path: "/iv_calculator", 
+    name: "IVCalculator", 
+    component: IVCalculator 
   },
   {
     path: '/about',

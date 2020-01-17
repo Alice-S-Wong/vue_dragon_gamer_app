@@ -5,14 +5,13 @@
           <div class="container">
             <p>Search for games:<input type="text" v-model="searchTerm"></p>
             <div class="row" v-for="game in filterBy(games, searchTerm, 'title')">
-              <section class="col-6 col-12-narrower">
+              <section class="col-12 col-12-narrower">
                 <div class="box post">
-                  <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
+                  <a href="#" class="image left"><img v-bind:src="game.image_url" alt="" /></a>
                   <div class="inner">
                     <h3>{{game.title}}</h3>
                     <p>{{game.id}}</p>
                     <p>{{game.description}}</p>
-                    <p>Release Year: {{game.release_year}}</p>
                     <p>Cumulative Rating: {{game.cumulative_rating}}</p>
                     <router-link v-bind:to="`/games/${game.id}`">See More Info</router-link>
                   </div>

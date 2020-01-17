@@ -3,13 +3,12 @@
     <section class="wrapper style1">
           <div class="container">
             <div class="row">
-              <section class="col-6 col-12-narrower">
+              <section class="col-12 col-12-narrower">
                 <div class="box post">
-                  <a href="#" class="image left"><img src="images/pic01.jpg" alt="" /></a>
+                  <a href="#" class="image left"><img v-bind:src="game.image_url" alt="" /></a>
                   <div class="inner">
                     <h3>{{game.title}}</h3>
                     <p>{{game.description}}</p>
-                    <p>Release Year: {{game.release_year}}</p>
                     <p>Cumulative Rating: {{game.cumulative_rating}}</p>
                     <p>Genres:</p>
                     <div v-for="genre in game.genre">
@@ -19,6 +18,10 @@
                     <p>Platforms:</p>
                     <div v-for="platform in game.platform">
                       {{platform.platform}}
+                    </div>
+                    <p>Release Dates:</p>
+                    <div v-for="date in game.release_dates">
+                      {{date.date}}
                     </div>
                     <router-link to="/games">Return to Games Index</router-link>
                   </div>
