@@ -32,6 +32,9 @@
     <p>HP: <input v-model="hp"> Attack: <input v-model="attack"> Defense: <input v-model="defense"></p>
     <p>Special Attack: <input v-model="specialAttack"> Special Defense: <input v-model="specialDefense"> Speed: <input v-model="speed"></p>
     <p>Species Base Stats</p>
+    <p>Enter Pokemon Species to Prepopulate Data: <input v-model="species"></p>
+    <p>Note: Data on Galar Pokemon not available yet</p>
+    <p><button v-on:click="prepopulateSpecies()">Enter</button></p>
     <p>HP: <input v-model="baseHP"> Attack: <input v-model="baseAttack"> Defense: <input v-model="baseDefense"></p>
     <p>Special Attack: <input v-model="baseSpecialAttack"> Special Defense: <input v-model="baseSpecialDefense"> Speed: <input v-model="baseSpeed"></p>
     <p>Effort Values (EVs)</p>
@@ -64,23 +67,25 @@
 </style>
 
 <script>
+import axios from "axios";
 export default {
   data: function() {
     return {
-      level: 15,
-      nature: "hardy",
-      hp: 40,
-      attack: 24,
-      defense: 32,
-      specialAttack: 15,
-      specialDefense: 15,
-      speed: 9,
-      baseHP: 50,
-      baseAttack: 65,
-      baseDefense: 90,
-      baseSpecialAttack: 35,
-      baseSpecialDefense: 35,
-      baseSpeed: 15,
+      species: "bulbasaur",
+      level: 5,
+      nature: "modest",
+      hp: 21,
+      attack: 12,
+      defense: 12,
+      specialAttack: 11,
+      specialDefense: 9,
+      speed: 11,
+      baseHP: 0,
+      baseAttack: 0,
+      baseDefense: 0,
+      baseSpecialAttack: 0,
+      baseSpecialDefense: 0,
+      baseSpeed: 0,
       evHP: 0,
       evAttack: 0,
       evDefense: 0,
@@ -115,7 +120,23 @@ export default {
   },
   created: function() {},
   methods: {
+    prepopulateSpecies: function() {
+      axios.get(`/api/pokemons/?pokemon=${this.species.toLowerCase()}`).then(response => {
+        this.stats = response.data;
+        this.baseHP = this.stats.hp;
+        this.baseAttack = this.stats.attack;
+        this.baseDefense = this.stats.defense;
+        this.baseSpecialAttack = this.stats.special_attack;
+        this.baseSpecialDefense = this.stats.special_defense;
+        this.baseSpeed = this.stats.speed;
+      });
+    },
     natureModifier: function() {
+      this.attackModifier = 1;
+      this.defenseModifier = 1;
+      this.specialAttackModifier = 1;
+      this.specialDefenseModifier = 1;
+      this.speedModifier = 1;
       if (this.nature === "lonely") {
         this.attackModifier = 1.1;
         this.defenseModifier = 0.9;
@@ -201,35 +222,35 @@ export default {
         }
       }
       for (i = 0; i < 32; i++) {
-        testAttack = ((((2 * parseInt(this.baseAttack) + i + (parseInt(this.evAttack) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.attackModifier).toFixed(1);
+        testAttack = ((((2 * parseInt(this.baseAttack) + i + (parseInt(this.evAttack) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.attackModifier);
         testAttack = Math.floor(testAttack);
         if (parseInt(this.attack) === testAttack) {
           this.ivArrayAttack.push(i);
         }
       }
       for (i = 0; i < 32; i++) {
-        testDefense = ((((2 * parseInt(this.baseDefense) + i + (parseInt(this.evDefense) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.defenseModifier).toFixed(1);
+        testDefense = ((((2 * parseInt(this.baseDefense) + i + (parseInt(this.evDefense) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.defenseModifier);
         testDefense = Math.floor(testDefense);
         if (parseInt(this.defense) === testDefense) {
           this.ivArrayDefense.push(i);
         }
       }
       for (i = 0; i < 32; i++) {
-        testSpecialAttack = ((((2 * parseInt(this.baseSpecialAttack) + i + (parseInt(this.evSpecialAttack) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.specialAttackModifier).toFixed(1);
+        testSpecialAttack = ((((2 * parseInt(this.baseSpecialAttack) + i + (parseInt(this.evSpecialAttack) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.specialAttackModifier);
         testSpecialAttack = Math.floor(testSpecialAttack);
         if (parseInt(this.specialAttack) === testSpecialAttack) {
           this.ivArraySpecialAttack.push(i);
         }
       }
       for (i = 0; i < 32; i++) {
-        testSpecialDefense = ((((2 * parseInt(this.baseSpecialDefense) + i + (parseInt(this.evSpecialDefense) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.specialDefenseModifier).toFixed(1);
+        testSpecialDefense = ((((2 * parseInt(this.baseSpecialDefense) + i + (parseInt(this.evSpecialDefense) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.specialDefenseModifier);
         testSpecialDefense = Math.floor(testSpecialDefense);
         if (parseInt(this.specialDefense) === testSpecialDefense) {
           this.ivArraySpecialDefense.push(i);
         }
       }
       for (i = 0; i < 32; i++) {
-        testSpeed = ((((2 * parseInt(this.baseSpeed) + i + (parseInt(this.evSpeed) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.speedModifier).toFixed(1);
+        testSpeed = ((((2 * parseInt(this.baseSpeed) + i + (parseInt(this.evSpeed) / 4)) * parseInt(this.level)) / 100) + 5) * parseFloat(this.speedModifier);
         testSpeed = Math.floor(testSpeed);
         if (parseInt(this.speed) === testSpeed) {
           this.ivArraySpeed.push(i);
@@ -240,15 +261,15 @@ export default {
       this.natureModifier();
       this.calculatedHP = (((2 * parseInt(this.baseHP) + parseInt(this.ivHP) + (parseInt(this.evHP) / 4)) * parseInt(this.calculatedLevel)) / 100) + parseInt(this.calculatedLevel) + 10;
       this.calculatedHP = Math.floor(this.calculatedHP);
-      this.calculatedAttack = ((((2 * parseInt(this.baseAttack) + parseInt(this.ivAttack) + (parseInt(this.evAttack) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.attackModifier).toFixed(1);
+      this.calculatedAttack = ((((2 * parseInt(this.baseAttack) + parseInt(this.ivAttack) + (parseInt(this.evAttack) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.attackModifier);
       this.calculatedAttack = Math.floor(this.calculatedAttack);
-      this.calculatedDefense = ((((2 * parseInt(this.baseDefense) + parseInt(this.ivDefense) + (parseInt(this.evDefense) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.defenseModifier).toFixed(1);
+      this.calculatedDefense = ((((2 * parseInt(this.baseDefense) + parseInt(this.ivDefense) + (parseInt(this.evDefense) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.defenseModifier);
       this.calculatedDefense = Math.floor(this.calculatedDefense);
-      this.calculatedSpecialAttack = ((((2 * parseInt(this.baseSpecialAttack) + parseInt(this.ivSpecialAttack) + (parseInt(this.evSpecialAttack) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.specialAttackModifier).toFixed(1);
+      this.calculatedSpecialAttack = ((((2 * parseInt(this.baseSpecialAttack) + parseInt(this.ivSpecialAttack) + (parseInt(this.evSpecialAttack) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.specialAttackModifier);
       this.calculatedSpecialAttack = Math.floor(this.calculatedSpecialAttack);
-      this.calculatedSpecialDefense = ((((2 * parseInt(this.baseSpecialDefense) + parseInt(this.ivSpecialDefense) + (parseInt(this.evSpecialDefense) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.specialDefenseModifier).toFixed(1);
+      this.calculatedSpecialDefense = ((((2 * parseInt(this.baseSpecialDefense) + parseInt(this.ivSpecialDefense) + (parseInt(this.evSpecialDefense) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.specialDefenseModifier);
       this.calculatedSpecialDefense = Math.floor(this.calculatedSpecialDefense);
-      this.calculatedSpeed = ((((2 * parseInt(this.baseSpeed) + parseInt(this.ivSpeed) + (parseInt(this.evSpeed) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.speedModifier).toFixed(1);
+      this.calculatedSpeed = ((((2 * parseInt(this.baseSpeed) + parseInt(this.ivSpeed) + (parseInt(this.evSpeed) / 4)) * parseInt(this.calculatedLevel)) / 100) + 5) * parseFloat(this.speedModifier);
       this.calculatedSpeed = Math.floor(this.calculatedSpeed);
     }
   }
