@@ -14,6 +14,7 @@ import ReviewNew from "../views/ReviewNew.vue";
 import FEStatCalculator from "../views/FEStatCalculator.vue";
 import FEStatSimulator from "../views/FEStatSimulator.vue";
 import IVCalculator from "../views/IVCalculator.vue";
+import AwakeningAvatarCreator from "../views/AwakeningAvatarCreator.vue";
 
 Vue.use(VueRouter)
 
@@ -87,6 +88,11 @@ const routes = [
     path: "/iv_calculator", 
     name: "IVCalculator", 
     component: IVCalculator 
+  },
+  { 
+    path: "/fea_avatar_creator", 
+    name: "AwakeningAvatarCreator", 
+    component: AwakeningAvatarCreator 
   },
   {
     path: '/about',

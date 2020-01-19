@@ -37,6 +37,10 @@
                 <li><a href="/signup">Signup</a></li>
                 <li><a href="/login">Login</a></li>
                 <li><a href="/logout">Logout</a></li>
+                <li><a href="/iv_calculator">Pokemon IV Calculator</a></li>
+                <li><a href="/fe_stat_calculator">Fire Emblem Stat Calculator</a></li>
+                <li><a href="/fe_stat_simulator">Fire Emblem Stat Simulator</a></li>
+                <li><a href="/fea_avatar_creator">FE Awakening Avatar Creator</a></li>
               </ul>
             </nav>
 
