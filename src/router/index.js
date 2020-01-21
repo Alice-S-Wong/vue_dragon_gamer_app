@@ -9,6 +9,7 @@ import GamesShow from "../views/GamesShow.vue";
 import ListsIndex from "../views/ListsIndex.vue";
 import ListNew from "../views/ListNew.vue";
 import ListShow from "../views/ListShow.vue";
+import ListsPrivate from "../views/ListsPrivate.vue";
 import ListItemNew from "../views/ListItemNew.vue";
 import ReviewNew from "../views/ReviewNew.vue";
 import FEStatCalculator from "../views/FEStatCalculator.vue";
@@ -93,6 +94,11 @@ const routes = [
     path: "/fea_avatar_creator", 
     name: "AwakeningAvatarCreator", 
     component: AwakeningAvatarCreator 
+  },
+  { 
+    path: "/lists_private", 
+    name: "ListsPrivate", 
+    component: ListsPrivate 
   },
   {
     path: '/about',

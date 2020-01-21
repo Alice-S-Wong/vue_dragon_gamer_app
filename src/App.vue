@@ -31,6 +31,7 @@
                 </li> -->
                 <li><a href="/games">Games Index</a></li>
                 <li><a href="/lists">Lists Index</a></li>
+                <li><a href="/lists_private">Private Lists</a></li>
                 <li><a href="/lists/new">Make New List</a></li>
                 <li><a href="/list_items/new">Add Item to List</a></li>
                 <li><a href="/reviews/new">Write a Review</a></li>
@@ -86,7 +87,7 @@
                 </form>
               </section>
             </div> -->
-          </div>
+          <!-- </div> -->
 
           <!-- Icons -->
             <ul class="icons">
