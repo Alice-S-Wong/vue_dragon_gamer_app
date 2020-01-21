@@ -47,7 +47,7 @@
         </div>
     <router-view/>
     <div id="footer">
-          <div class="container">
+          <!-- <div class="container">
             <div class="row">
               <section class="col-3 col-6-narrower col-12-mobilep">
                 <h3>Links to Stuff</h3>
@@ -85,7 +85,7 @@
                   </div>
                 </form>
               </section>
-            </div>
+            </div> -->
           </div>
 
           <!-- Icons -->

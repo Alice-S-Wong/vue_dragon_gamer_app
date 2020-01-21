@@ -8,7 +8,9 @@
       <option>favorites</option>
       <option>wishlist</option>
     </select></p>
-    <p>Game ID:<input v-model="gameId"></p>
+    <p>Game ID:<select v-model="gameId">
+      <option v-for="game in games" v-bind:value="game.id">{{game.title}}</option>
+    </select></p>
     <button v-on:click="addItemToList()">Add Item to List</button>
   </div>
 </template>
@@ -24,10 +26,15 @@ export default {
       message: "Add Item to List",
       listType: "",
       gameId: "",
+      games: [],
       errors: []
     };
   },
-  created: function() {},
+  created: function() {
+    axios.get("/api/games/").then(response => {
+      this.games = response.data;
+    });
+  },
   methods: {
     addItemToList: function() {
       var params = {

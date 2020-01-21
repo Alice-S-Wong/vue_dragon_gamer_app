@@ -2,7 +2,9 @@
   <div class="ReviewNew">
     <h1>{{ message }}</h1>
     <div v-for="error in errors">{{error}}</div>
-    <p>Game ID:<input v-model="gameId"></p>
+    <p>Game ID:<select v-model="gameId">
+      <option v-for="game in games" v-bind:value="game.id">{{game.title}}</option>
+    </select></p>
     <p>Rating: <select v-model="rating">
       <option disabled value="">Please select one</option>
       <option>0</option>
@@ -34,10 +36,15 @@ export default {
       gameId: "",
       rating: "",
       review: "",
-      errors: []
+      errors: [],
+      games: []
     };
   },
-  created: function() {},
+  created: function() {
+    axios.get("/api/games/").then(response => {
+      this.games = response.data;
+    });
+  },
   methods: {
     createReview: function() {
       var params = {
